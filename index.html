@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit" />
+		<script type="text/javascript" src="extend/jquery.min.js"></script>
+		<script type="text/javascript" src="extend/vue.js" ></script>
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/index.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<div id="canvas" style="position: relative;width: 600px;height: 600px;overflow: hidden;">
+			<div class="object3d"  v-bind:style="{transform:'translate3d('+ball.x+'px,'+ball.y+'px,'+ball.z+'px) rotateX('+ball.rx+'deg) rotateY('+ball.ry+'deg) rotateZ('+ball.rz+'deg)'}">
+				<div class="clip" v-for="b in ball.clips" 
+					
+					style="background-image: url(img/1.gif);"
+					v-bind:style="{
+									 'width':(ball.clipwidthheight-2)+'px',
+									 'height':(ball.clipwidthheight-2)+'px',
+									 'border-radius':((rotateYDeg($index,ball.clips.length)==90)||(rotateYDeg($index,ball.clips.length)==-90)?'100% !important':''),
+									 'transform':'rotateX('+rotateXDeg($index)+'deg) rotateY('+rotateYDeg($index,ball.clips.length)+'deg) '+(rotateYDeg($index,ball.clips.length)>0?'rotateZ(180deg)':'')+' translateZ('+(ballR+ball.hanasuR)+'px)',
+																		 
+								  }"></div>
+
+			</div>
+			
+		</div>
+		<span>鼠标按住拖动位置滚轮缩放，Alt+拖动/滚轮=旋转</span>
+		<span>块大小</span><input type="range" v-model="ball.clipwidthheight" min="1" max="100"><span>{{ball.clipwidthheight}}</span>
+		<span>离心距离</span><input type="range" v-model="ball.hanasuR" min="1" max="100"><span>{{ball.hanasuR}}</span>
+	</body>
+
+</html>

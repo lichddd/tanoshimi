@@ -1,0 +1,56 @@
+*{
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	
+}
+#canvas
+{
+	transform-style: preserve-3d;
+  perspective: 5000px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-perspective: 5000px;
+  -moz-transform-style: preserve-3d;
+  -moz-perspective: 5000px;
+  -ms-transform-style: preserve-3d;
+  -ms-perspective: 5000px;
+	
+	
+	
+}
+#canvas >*
+{
+		transform-style: preserve-3d;
+  perspective: 5000px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-perspective: 5000px;
+  -moz-transform-style: preserve-3d;
+  -moz-perspective: 5000px;
+  -ms-transform-style: preserve-3d;
+  -ms-perspective: 5000px;
+	
+}
+.object3d
+{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    transform-origin: center;
+}
+.clip
+{
+	transform-origin: center;
+	
+    width: 18px;
+    height: 18px;
+    top: -10px;
+    left: -10px;
+    background: rgba(255,0,0,0.3);
+    border: inset 1px rgba(0,0,0,0.3);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
