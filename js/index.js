@@ -14,7 +14,8 @@ $().ready(function() {
 				hanasuR:0,
 				clips:[]
 				},
-
+			number:0,
+			url:"img/1.gif",
 		},
 		methods: {
 			rotateYDeg:function($index,len){
@@ -89,10 +90,24 @@ $().ready(function() {
 		
 	});
 
-	for(var i = 0; i < 500; i++) {
-		vm.ball.clips.push({})
+	for(var i = 0; i < vm.number; i++) {
+		vm.ball.clips.push({});
+//		vm.ball.clips.push({url:'img/1.jpg'});
 	}
 
+	vm.$watch("number", function(val) {
+		
+		arr=[];
+	for(var i = 0; i < vm.number; i++) {
+		arr.push({});
+//		vm.ball.clips.push({url:'img/1.jpg'});
+	}
+		vm.ball.clips=[];
+		vm.ball.clips=arr;
+		
+	});
+	
+	vm.number=500;
 });
 var vm;
 $().ready(function() {
@@ -150,7 +165,7 @@ $().ready(function() {
 			if (e.altKey) {
 				vm.ball.ry+=(e.clientX-preX)/10;
 				
-				vm.ball.rx+=(e.clientY-preY)/10;
+				vm.ball.rx-=(e.clientY-preY)/10;
 				
 				preX=e.clientX;
 				preY=e.clientY;
