@@ -13,12 +13,13 @@
 	</head>
 
 	<body>
+		
 		<div id="canvas" style="position: relative;width: 600px;height: 600px;overflow: hidden;">
 			<div class="object3d"  v-bind:style="{transform:'translate3d('+ball.x+'px,'+ball.y+'px,'+ball.z+'px) rotateX('+ball.rx+'deg) rotateY('+ball.ry+'deg) rotateZ('+ball.rz+'deg)'}">
 				<div class="clip" v-for="b in ball.clips" 
-					
-					style="background-image: url(img/1.gif);"
-					v-bind:style="{
+					v-if="lines[$index]"
+					v-bind:style="{	 
+									 'background-image':'url('+url+')',
 									 'width':(ball.clipwidthheight-2)+'px',
 									 'height':(ball.clipwidthheight-2)+'px',
 									 'border-radius':((rotateYDeg($index,ball.clips.length)==90)||(rotateYDeg($index,ball.clips.length)==-90)?'100% !important':''),
@@ -30,8 +31,11 @@
 			
 		</div>
 		<span>鼠标按住拖动位置滚轮缩放，Alt+拖动/滚轮=旋转</span>
+		<br />
 		<span>块大小</span><input type="range" v-model="ball.clipwidthheight" min="1" max="100"><span>{{ball.clipwidthheight}}</span>
 		<span>离心距离</span><input type="range" v-model="ball.hanasuR" min="1" max="100"><span>{{ball.hanasuR}}</span>
+		<br />
+		<span>图片与数量</span><input type="url" v-model="url"><input id="numberinput" type="number" value="500" min="100" max="2000"><span>{{ball.number}}个</span><button onclick="vm.number=Number($('#numberinput').val())">改变数量</button>
 	</body>
 
 </html>
